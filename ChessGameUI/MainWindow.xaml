@@ -1,0 +1,73 @@
+<Window x:Class="ChessGameUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Chess Game" Height="800" Width="700"
+        MinWidth="500" MinHeight="650"
+        Background="#2C2C2C">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Background="#1E1E1E">
+            <TextBlock Text="♟ CHESS GAME ONLINE ♟" FontSize="28" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="StatusText" Text="Not connected" FontSize="14" Foreground="#AAAAAA" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+        </StackPanel>
+
+        <Border Grid.Row="1" Background="#1E1E1E" Padding="20">
+            <Viewbox Stretch="Uniform">
+                <Grid Width="640" Height="640">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/> <RowDefinition Height="600"/>
+                        <RowDefinition Height="20"/> </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/> <ColumnDefinition Width="600"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Row="1" Grid.Column="1" x:Name="ChessBoard">
+                    </Grid>
+                    <Canvas Grid.Row="1" Grid.Column="1" x:Name="AnimationLayer" IsHitTestVisible="False" />
+
+                    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="a" Width="75" Foreground="#888888" TextAlignment="Center"/>
+                        <TextBlock Text="b" Width="75" Foreground="#888888" TextAlignment="Center"/>
+                        <TextBlock Text="c" Width="75" Foreground="#888888" TextAlignment="Center"/>
+                        <TextBlock Text="d" Width="75" Foreground="#888888" TextAlignment="Center"/>
+                        <TextBlock Text="e" Width="75" Foreground="#888888" TextAlignment="Center"/>
+                        <TextBlock Text="f" Width="75" Foreground="#888888" TextAlignment="Center"/>
+                        <TextBlock Text="g" Width="75" Foreground="#888888" TextAlignment="Center"/>
+                        <TextBlock Text="h" Width="75" Foreground="#888888" TextAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
+                        <TextBlock Text="8" Height="75" Foreground="#888888" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="7" Height="75" Foreground="#888888" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="6" Height="75" Foreground="#888888" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="5" Height="75" Foreground="#888888" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="4" Height="75" Foreground="#888888" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="3" Height="75" Foreground="#888888" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="2" Height="75" Foreground="#888888" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="1" Height="75" Foreground="#888888" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </Viewbox>
+        </Border>
+
+        <StackPanel Grid.Row="2" Background="#1E1E1E">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                <TextBlock Text="Server:" Foreground="White" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox x:Name="ServerAddressBox" Width="250" Height="30" Text="ws://localhost:8080" VerticalContentAlignment="Center"/>
+                <Button x:Name="ConnectButton" Content="CONNECT" Width="100" Height="30" Margin="10,0,0,0" Background="#4CAF50" Foreground="White" FontWeight="Bold" Click="ConnectButton_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Your name:" Foreground="White" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox x:Name="PlayerNameBox" Width="150" Height="30" Text="Player1" VerticalContentAlignment="Center"/>
+                <Button x:Name="ResignButton" Content="RESIGN" Width="100" Height="30" Margin="10,0,0,0" Background="#F44336" Foreground="White" FontWeight="Bold" IsEnabled="False" Click="ResignButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
